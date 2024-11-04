@@ -1,0 +1,13 @@
+vendor
+node_modules
+bin/strauss.phar
+dist
+bundle
+assets
+*.lock
+.idea
+.DS_Store
+DS_Store
+*.lock
+*.cache
+package-lock.json

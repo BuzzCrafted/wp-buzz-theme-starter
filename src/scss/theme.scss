@@ -1,0 +1,3 @@
+// Import all necessary SCSS files before importing the main style.css file from the root directory.
+// This ensures that all required styles are included and properly compiled before the final CSS import.
+@import "../../style.css";
