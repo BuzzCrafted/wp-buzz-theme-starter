@@ -112,7 +112,7 @@ if [ ${answer:-yes} == 'yes' ]; then
   composer install
 fi
 
-if [ $THEME_TEMPLATE != '' ]; then
+if [ "$THEME_TEMPLATE" != '' ]; then
   find $PWD  -name 'style.css' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-template}/Template: ${THEME_TEMPLATE}/g"
 else 
   echo "Info: Copying optional files"
