@@ -9,7 +9,7 @@
  * @since 1.0.0
  */
 
-namespace {theme - namespace }\Configurator;
+namespace {theme-namespace }\Configurator;
 
 use Bdev\ContentManagement\Interfaces\Theme_Content_Configuration_Interface;
 

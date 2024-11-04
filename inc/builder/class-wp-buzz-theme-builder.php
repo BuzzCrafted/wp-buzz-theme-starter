@@ -12,7 +12,7 @@
  * @subpackage Builder
  */
 
-namespace {theme - namespace }\Builder;
+namespace {theme-namespace }\Builder;
 
 use Bdev\ContentManagement\Interfaces\Theme_Content_Configuration_Interface;
 use Bdev\ContentManagement\Theme_Content_Provider;

@@ -7,7 +7,7 @@
  * @since 1.0.0
  */
 
-namespace {theme - namespace }
+namespace {theme-namespace};
 
 /**
  * Autoload Classes
