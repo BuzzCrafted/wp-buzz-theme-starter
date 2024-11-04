@@ -15,8 +15,8 @@
 
 namespace {theme-namespace}\Theme;
 
-use {theme-namespace}\Bulder\MP_Theme_Builder;
-use {theme-namespace}\Configuratoe\MP_Theme_Content_Configurator;
+use {theme-namespace}\Bulder\WP_Buzz_Theme_Builder;
+use {theme-namespace}\Configuratoe\WP_Buzz_Theme_Content_Configurator;
 use Bdev\ContentManagement\Interfaces\Content_Data_Interface;
 use Bdev\Theme\Abstract_Theme_Factory;
 use Bdev\EventManagement\Event_Manager;
