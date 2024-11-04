@@ -47,7 +47,7 @@ echo "Info: Run Theme Starter script"
 
 echo "Info: Rename folder to ${THEME_KEBAB}"
 cd ..
-mv wp-theme-boilerplate ${THEME_KEBAB}
+mv wp-buzz-theme-starter ${THEME_KEBAB}
 cd ${THEME_KEBAB}
 
 if [ -d ./.git ]; then
@@ -55,8 +55,8 @@ if [ -d ./.git ]; then
   echo "Info: Delete .git"
 fi
 
-if [ -f ./languages/wp-theme-boilerplate.pot ]; then
-  mv ./languages/wp-theme-boilerplate.pot ./languages/${THEME_KEBAB}.pot
+if [ -f ./languages/wp-buzz-theme-starter.pot ]; then
+  mv ./languages/wp-buzz-theme-starter.pot ./languages/${THEME_KEBAB}.pot
   echo "Info: Rename to ${THEME_KEBAB}.pot"
 fi
 
@@ -87,6 +87,7 @@ THEME_TAGS=${theme_tags:-$THEME_TAGS_DEF}
 find $PWD -name '*.php' -o -name 'style.css'  -o -name '*.pot' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-name}/${THEME}/g"
 find $PWD -name '*.php' -o -name 'composer.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-namespace}/${THEME_CAPITAL_CAMEL_SNAKE}/g"
 find $PWD -name '*.php' -o -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-slug}/${THEME_KEBAB}/g"
+find $PWD -name '*.php' -o -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/WP_Buzz/${THEME_CAPITAL_CAMEL_SNAKE}/g"
 
 find $PWD  -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-uri}/${THEME_URI}/g"
 find $PWD  -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-author}/${THEME_AUTHOR}/g"
@@ -95,8 +96,10 @@ find $PWD  -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 
 find $PWD  -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-tags}/${THEME_TAGS}/g"
 
 if [ -f ./inc/class-wp-theme-boilerplate.php ]; then
-  echo "Info: Renaming main theme file (class-wp-theme-boilerplate.php) for theme: ${THEME}"
-  mv ./inc/class-wp-theme-boilerplate.php ./inc/class-${THEME_KEBAB}-theme.php
+  echo "Info: Renaming main theme base files  for theme: ${THEME}"
+  mv ./inc/class-wp-buzz-theme-factory.php ./inc/class-${THEME_KEBAB}-theme-factory.php
+  mv ./inc/builder/class-wp-buzz-theme-builder.php ./inc/builder/class-${THEME_KEBAB}-theme-builder.php
+  mv ./inc/configurator/class-wp-buzz-theme-content-configurator.php ./inc/configurator/class-${THEME_KEBAB}-theme-content-configurator.php
 fi
 
 read -p "Install dependancies [yes]: " answer
