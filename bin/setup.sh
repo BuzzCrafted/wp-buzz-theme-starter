@@ -121,10 +121,13 @@ else
 fi
 rm -rf ./optional/
 
-echo "Info: Copying additional github worlflow and git hooks"
+echo "Info: Copying additional github workflow and git hooks"
+mkdir -p .git/hooks/
 cp -r post-install/hooks/ .git/hooks/
 chmod(.git/hooks/pre-commit, 0777)
 chmod(.git/hooks/pre-push, 0777)
+
+mkdir -p .github/
 cp -r post-install/.github/ .github/
 cp -r post-install/.travis.yml .
 
