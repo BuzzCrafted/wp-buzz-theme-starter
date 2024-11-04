@@ -15,7 +15,7 @@
 
 namespace {theme-namespace}\Theme;
 
-use {theme-namespace}\Bulder\WP_Buzz_Theme_Builder;
+use {theme-namespace}\Builder\WP_Buzz_Theme_Builder;
 use {theme-namespace}\Configuratoe\WP_Buzz_Theme_Content_Configurator;
 use Bdev\ContentManagement\Interfaces\Content_Data_Interface;
 use Bdev\Theme\Abstract_Theme_Factory;
