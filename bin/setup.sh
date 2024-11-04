@@ -121,14 +121,15 @@ else
 fi
 rm -rf ./optional/
 
-echo "Info: Copying additional github workflow and git hooks"
+echo "Info: Copying post-install files"
 mkdir -p .git/hooks/
 cp -r post-install/hooks/ .git/hooks/
-chmod(.git/hooks/pre-commit, 0777)
-chmod(.git/hooks/pre-push, 0777)
+chmod 0777 .git/hooks/pre-commit
+chmod 0777 .git/hooks/pre-push
 
 mkdir -p .github/
 cp -r post-install/.github/ .github/
+
 cp -r post-install/.travis.yml .
 
 echo "Info: Generated a WordPress theme: ${THEME}"
