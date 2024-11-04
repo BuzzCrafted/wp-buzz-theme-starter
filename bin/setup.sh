@@ -35,14 +35,6 @@ THEME_AUTHOR_DEF="Dmitry Kokorin"
 THEME_AUTHOR_URI_DEF="https:\/\/github.com\/dmitri-ko"
 THEME_TAGS_DEF="custom-theme, theme-boilerplate"
 
-#if [ ! -d ../${THEME_KEBAB} ]; then
-#  echo "Error: Cannot execute"
-#  echo "The directory name and the Theme Slug should be the same character string"
-#  echo "Directory name: $(cd $(dirname $0)/..;pwd)"
-#  echo "Theme Slug: ${THEME_KEBAB}"
-#  exit 1
-#fi
-
 echo "Info: Run Theme Starter script"
 
 echo "Info: Rename folder to ${THEME_KEBAB}"
@@ -52,22 +44,18 @@ cd ${THEME_KEBAB}
 
 if [ -d ./.git ]; then
   rm -rf ./.git
-  echo "Info: Delete .git"
+  echo "Info: Deleted .git"
 fi
 
 if [ -f ./languages/wp-buzz-theme-starter.pot ]; then
   mv ./languages/wp-buzz-theme-starter.pot ./languages/${THEME_KEBAB}.pot
-  echo "Info: Rename to ${THEME_KEBAB}.pot"
+  echo "Info: Renamed to ${THEME_KEBAB}.pot"
 fi
 
 read -p "Theme template ['']: " theme_template
 THEME_TEMPLATE=${theme_template:-''}
 
-if [ $THEME_TEMPLATE != '' ]; then
-  THEME_DESCRIPTION_DEF="Customized child theme for WordPress."
-else 
-  THEME_DESCRIPTION_DEF="Customized theme for WordPress."
-fi
+THEME_DESCRIPTION_DEF="Customized ${THEME_TEMPLATE:+child }theme for WordPress."
 
 read -p "Theme URI [$THEME_URI_DEF]: " theme_uri
 THEME_URI=${theme_uri:-$THEME_URI_DEF}
@@ -75,25 +63,32 @@ THEME_URI=${theme_uri:-$THEME_URI_DEF}
 read -p "Theme Author [$THEME_AUTHOR_DEF]: " author
 THEME_AUTHOR=${author:-$THEME_AUTHOR_DEF}
 
-read -p "Theme Author [$THEME_AUTHOR_URI_DEF]: " author_uri
+read -p "Theme Author URI [$THEME_AUTHOR_URI_DEF]: " author_uri
 THEME_AUTHOR_URI=${author_uri:-$THEME_AUTHOR_URI_DEF}
 
-read -p "Theme Desciption [$THEME_DESCRIPTION_DEF]: " theme_description
+read -p "Theme Description [$THEME_DESCRIPTION_DEF]: " theme_description
 THEME_DESCRIPTION=${theme_description:-$THEME_DESCRIPTION_DEF}
 
 read -p "Theme tags [$THEME_TAGS_DEF]: " theme_tags
 THEME_TAGS=${theme_tags:-$THEME_TAGS_DEF}
 
-find $PWD -name '*.php' -o -name 'style.css'  -o -name '*.pot' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-name}/${THEME}/g"
-find $PWD -name '*.php' -o -name 'composer.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-namespace}/${THEME_CAPITAL_CAMEL_SNAKE}/g"
-find $PWD -name '*.php' -o -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-slug}/${THEME_KEBAB}/g"
-find $PWD -name '*.php' -o -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/WP_Buzz/${THEME_CAPITAL_CAMEL_SNAKE}/g"
+for pattern in '{theme-name}' '{theme-namespace}' '{theme-slug}' 'WP_Buzz' '{theme-uri}' '{theme-author}' '{theme-author-uri}' '{theme-description}' '{theme-tags}'; do
+  replacement=""
+  case $pattern in
+    '{theme-name}') replacement=$THEME ;;
+    '{theme-namespace}') replacement=$THEME_CAPITAL_CAMEL_SNAKE ;;
+    '{theme-slug}') replacement=$THEME_KEBAB ;;
+    'WP_Buzz') replacement=$THEME_CAPITAL_CAMEL_SNAKE ;;
+    '{theme-uri}') replacement=$THEME_URI ;;
+    '{theme-author}') replacement=$THEME_AUTHOR ;;
+    '{theme-author-uri}') replacement=$THEME_AUTHOR_URI ;;
+    '{theme-description}') replacement=$THEME_DESCRIPTION ;;
+    '{theme-tags}') replacement=$THEME_TAGS ;;
+  esac
 
-find $PWD  -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-uri}/${THEME_URI}/g"
-find $PWD  -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-author}/${THEME_AUTHOR}/g"
-find $PWD  -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-author-uri}/${THEME_AUTHOR_URI}/g"
-find $PWD  -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-description}/${THEME_DESCRIPTION}/g"
-find $PWD  -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-tags}/${THEME_TAGS}/g"
+  find $PWD -type f \( -name '*.php' -o -name 'style.css' -o -name '*.pot' -o -name 'theme-settings.json' -o -name 'readme.txt' -o -name 'composer.json' -o -name 'package.json' \) \
+    -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/$pattern/$replacement/g"
+done
 
 echo "Info: Renaming theme base files for theme: ${THEME}"
 for file in ./inc/class-wp-buzz-theme-factory.php  \
@@ -113,7 +108,7 @@ IS_INSTALL_DEPENDENCIES=${answer:-yes}
 if [ ${answer:-yes} == 'yes' ]; then
   echo "Info: Theme ${THEME} initialization"
   npm install
-  mkdir vendor-prefixed
+  mkdir -p vendor-prefixed
   composer install
 fi
 
