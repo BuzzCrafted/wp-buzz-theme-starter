@@ -7,7 +7,7 @@
  * @since 1.0.0
  */
 
-namespace {theme-namespace};
+namespace {theme - namespace }
 
 /**
  * Autoload Classes
@@ -18,7 +18,9 @@ if ( is_readable( $vendor_file ) ) {
 	include_once $vendor_file;
 }
 
-$theme = new {theme-namespace}_Theme();
+$theme = ( new WP_Buzz_Theme_Factory() )->create_content_data();
+
+$theme->load_theme();
 
 /**
  * Loadd extra functions

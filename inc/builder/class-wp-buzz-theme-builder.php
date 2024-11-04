@@ -1,15 +1,36 @@
 <?php
+/**
+ * Class WP_Buzz_Theme_Builder
+ *
+ * This class implements the Theme_Content_Provider_Builder_Interface to build
+ * concrete classes for the WordPress theme {theme-name} implementation.
+ *
+ * @author     {theme-author}
+ * @since      1.0.0
+ * @version    1.0.0
+ * @package    {theme-name}
+ * @subpackage Builder
+ */
+
+namespace {theme - namespace }\Builder;
 
 use Bdev\ContentManagement\Interfaces\Theme_Content_Configuration_Interface;
 use Bdev\ContentManagement\Theme_Content_Provider;
 use Bdev\ContentManagement\Theme_Content_Provider_Builder_Interface;
 
-class MP_Theme_Builder implements Theme_Content_Provider_Builder_Interface {
+/**
+ * WP_Buzz_Theme_Builder constructor.
+ *
+ * Initializes the builder with the necessary configurator.
+ *
+ * @since 1.0.0
+ */
+class WP_Buzz_Theme_Builder implements Theme_Content_Provider_Builder_Interface {
 
 	/**
 	 * Theme configurator.
 	 *
-	 * Stores the configuration required for building theme content.
+	 * Stores the configuration required for building*
 	 *
 	 * @since 1.0.0
 	 * @var Theme_Content_Configuration_Interface
@@ -17,9 +38,9 @@ class MP_Theme_Builder implements Theme_Content_Provider_Builder_Interface {
 	private Theme_Content_Configuration_Interface $theme_configurator;
 
 	/**
-	 * Set the theme content configurator.
+	 * Set thefigurator.
 	 *
-	 * Configures the builder with a specific theme content configurator, which provides the necessary configuration details for building theme content.
+	 * Configures the builder with a specificfigurator, which provides the necessary configuration details for building*
 	 *
 	 * @since 1.0.0
 	 *
@@ -34,7 +55,7 @@ class MP_Theme_Builder implements Theme_Content_Provider_Builder_Interface {
 	/**
 	 * Builds and returns an instance of Theme_Content_Provider.
 	 *
-	 * Uses the theme content configurator to build and provide a Theme_Content_Provider instance, which manages theme event subscribers, shortcodes, and settings.
+	 * Uses thefigurator to build and provide a Theme_Content_Provider instance, which managesribers, shortcodes, and settings.
 	 *
 	 * @since 1.0.0
 	 *
