@@ -49,6 +49,7 @@ class WP_Buzz_Theme_Factory extends Abstract_Theme_Factory {
 	 * Create a new Event_Manager instance.
 	 *
 	 * @since 1.0.0
+	 * 
 	 *
 	 * @return Event_Manager The event manager instance.
 	 */

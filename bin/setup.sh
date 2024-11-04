@@ -95,12 +95,17 @@ find $PWD  -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 
 find $PWD  -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-description}/${THEME_DESCRIPTION}/g"
 find $PWD  -name 'style.css'  -o -name '*.pot' -o -name 'package.json' -o -name 'theme-settings.json' -o -name 'readme.txt' -not -iwholename './.git/*' -not -iwholename './node_modules/*' -not -iwholename './vendor/*' | xargs gsed -i "s/{theme-tags}/${THEME_TAGS}/g"
 
-if [ -f ./inc/class-wp-theme-boilerplate.php ]; then
-  echo "Info: Renaming main theme base files  for theme: ${THEME}"
-  mv ./inc/class-wp-buzz-theme-factory.php ./inc/class-${THEME_KEBAB}-theme-factory.php
-  mv ./inc/builder/class-wp-buzz-theme-builder.php ./inc/builder/class-${THEME_KEBAB}-theme-builder.php
-  mv ./inc/configurator/class-wp-buzz-theme-content-configurator.php ./inc/configurator/class-${THEME_KEBAB}-theme-content-configurator.php
-fi
+echo "Info: Renaming theme base files for theme: ${THEME}"
+for file in ./inc/class-wp-buzz-theme-factory.php  \
+              ./inc/class-wp-buzz-theme-factory.php \
+              ./inc/builder/class-wp-buzz-theme-builder.php \
+              ./inc/configurator/class-wp-buzz-theme-content-configurator.php; do
+    if [ -f "$file" ]; then
+      new_file=$(echo "$file" | gsed -r "s/wp-buzz/${THEME_KEBAB}/g")
+      mv "$file" "$new_file"
+    fi
+done
+
 
 read -p "Install dependancies [yes]: " answer
 IS_INSTALL_DEPENDENCIES=${answer:-yes}
@@ -131,6 +136,8 @@ mkdir -p .github/
 cp -r post-install/.github/ .github/
 
 cp -r post-install/.travis.yml .
+
+rm -rf ./post-install/
 
 echo "Info: Generated a WordPress theme: ${THEME}"
 
