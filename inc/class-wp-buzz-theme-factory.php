@@ -13,10 +13,10 @@
  * @author     {theme-author}
  */
 
-namespace {theme-namespace}\Theme;
+namespace WP_Buzz\Theme;
 
-use {theme-namespace}\Builder\WP_Buzz_Theme_Builder;
-use {theme-namespace}\Configuratoe\WP_Buzz_Theme_Content_Configurator;
+use WP_Buzz\Builder\WP_Buzz_Theme_Builder;
+use WP_Buzz\Configuratoe\WP_Buzz_Theme_Content_Configurator;
 use Bdev\ContentManagement\Interfaces\Content_Data_Interface;
 use Bdev\Theme\Abstract_Theme_Factory;
 use Bdev\EventManagement\Event_Manager;
@@ -49,7 +49,6 @@ class WP_Buzz_Theme_Factory extends Abstract_Theme_Factory {
 	 * Create a new Event_Manager instance.
 	 *
 	 * @since 1.0.0
-	 * 
 	 *
 	 * @return Event_Manager The event manager instance.
 	 */

@@ -4,12 +4,12 @@
  *
  * Handles theme configuration.
  *
- * @package {theme-namespace}
+ * @package    WP_Buzz
  * @subpackage Configurator
- * @since 1.0.0
+ * @since      1.0.0
  */
 
-namespace {theme-namespace}\Configurator;
+namespace WP_Buzz\Configurator;
 
 use Bdev\ContentManagement\Interfaces\Theme_Content_Configuration_Interface;
 

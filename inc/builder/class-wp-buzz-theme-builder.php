@@ -8,11 +8,11 @@
  * @author     {theme-author}
  * @since      1.0.0
  * @version    1.0.0
- * @package    {theme-name}
+ * @package    WP_Buzz
  * @subpackage Builder
  */
 
-namespace {theme-namespace}\Builder;
+namespace WP_Buzz\Builder;
 
 use Bdev\ContentManagement\Interfaces\Theme_Content_Configuration_Interface;
 use Bdev\ContentManagement\Theme_Content_Provider;
