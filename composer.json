@@ -29,7 +29,7 @@
         ],
         "test": "phpunit",
         "lint": "phpcs --standard=.phpcs.xml *.php inc/",
-        "analyse": "phpstan analyse *.php inc/",
+        "analyse": "phpstan analyse --memory-limit=512M *.php inc/",
         "post-install-cmd": [
             "@prefix-namespaces"
         ]
