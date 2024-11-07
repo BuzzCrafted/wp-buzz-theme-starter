@@ -12,6 +12,8 @@
 namespace WP_Buzz\Configurator;
 
 use Bdev\ContentManagement\Interfaces\Theme_Content_Configuration_Interface;
+use Bdev\EventManagement\Interfaces\Subscriber_Interface;
+use Bdev\Shortcodes\Interfaces\Shortcode_Interface;
 
 /**
  * Class WP_Buzz_Theme_Content_Configurator
@@ -24,47 +26,41 @@ use Bdev\ContentManagement\Interfaces\Theme_Content_Configuration_Interface;
  * @since 1.0.0
  */
 class WP_Buzz_Theme_Content_Configurator implements Theme_Content_Configuration_Interface {
-	/**
-	 * Retrieve configuration options for event subscribers.
-	 *
-	 * This method allows you to define event subscribers that add functionality to your theme.
-	 * It returns an array that provides the event subscribers with the necessary configuration options.
-	 * The array structure is:
-	 *   'section' => array('option' => 'Subscriber_Interface')
-	 *
-	 * @since 1.0.0
-	 * @return array Array of event subscriber configuration options.
-	 */
+		/**
+		 * Retrieve an array of event subscribers.
+		 *
+		 * Implementations should return all event or action subscribers
+		 * associated with the theme.
+		 *
+		 * @since 1.0.0
+		 * @return array<int, Subscriber_Interface> Array of event subscribers.
+		 */
 	public function get_event_subscribers(): array {
 		return array();
 	}
 
-	/**
-	 * Retrieve configuration options for shortcodes.
-	 *
-	 * This method defines the WordPress shortcodes provided by your theme.
-	 * It returns an array containing the necessary configuration options for each shortcode.
-	 * The array structure is:
-	 *   'section' => array('option' => 'Shortcode_Interface')
-	 *
-	 * @since 1.0.0
-	 * @return array Array of shortcode configuration options.
-	 */
+		/**
+		 * Retrieve an array of shortcode configurations.
+		 *
+		 * Implementations should return all shortcode configurations
+		 * associated with the theme.
+		 *
+		 * @since 1.0.0
+		 * @return array<int, Shortcode_Interface> Array of shortcode configurations.
+		 */
 	public function get_shortcode_config(): array {
 		return array();
 	}
 
-	/**
-	 * Retrieve configuration options for theme settings.
-	 *
-	 * Provides the configuration for the theme settings section.
-	 *
-	 * The array structure is:
-	 *   'section' => array('option')
-	 *
-	 * @since 1.0.0
-	 * @return array Array of theme settings options.
-	 */
+		/**
+		 * Retrieve an array of theme settings.
+		 *
+		 * Implementations should return all theme settings
+		 * associated with the theme.
+		 *
+		 * @since 1.0.0
+		 * @return array<string, mixed> Array of theme settings.
+		 */
 	public function get_theme_settings(): array {
 		return array();
 	}
