@@ -41,7 +41,7 @@ class WP_Buzz_Theme_Factory extends Abstract_Theme_Factory {
 	 * @return Content_Data_Interface The content data configurator instance.
 	 */
 	public function create_content_data(): Content_Data_Interface {
-		$theme_builder = new WP_Buzz_Theme_Builder;
+		$theme_builder = new WP_Buzz_Theme_Builder();
 		return $theme_builder
 			->set_theme_content_configurator( new WP_Buzz_Theme_Content_Configurator() )
 			->build();
