@@ -28,8 +28,8 @@
             "@prefix-namespaces"
         ],
         "test": "phpunit",
-        "lint": "phpcs --standard=.phpcs.xml inc/",
-        "analyse": "phpstan analyse inc/",
+        "lint": "phpcs --standard=.phpcs.xml *.php inc/",
+        "analyse": "phpstan analyse *.php inc/",
         "post-install-cmd": [
             "@prefix-namespaces"
         ]
