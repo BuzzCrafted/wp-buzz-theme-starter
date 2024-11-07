@@ -106,10 +106,11 @@ done
 read -p "Install dependancies [yes]: " answer
 IS_INSTALL_DEPENDENCIES=${answer:-yes}
 
+mkdir -p vendor-prefixed
+
 if [ ${answer:-yes} == 'yes' ]; then
   echo "Info: Theme ${THEME} initialization"
   npm install
-  mkdir -p vendor-prefixed
   composer install
 fi
 
