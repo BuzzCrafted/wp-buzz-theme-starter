@@ -34,14 +34,14 @@ if ( post_password_required() ) {
 			if ( '1' === $_s_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', '{theme-slug}' ),
+					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'cool-presser' ),
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			} else {
 				printf(
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $_s_comment_count, 'comments title', '{theme-slug}' ) ),
-					number_format_i18n( $_s_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', (int) $_s_comment_count, 'comments title', 'cool-presser' ) ),
+					number_format_i18n( (float) $_s_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			}
@@ -67,7 +67,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', '{theme-slug}' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'cool-presser' ); ?></p>
 			<?php
 		endif;
 
