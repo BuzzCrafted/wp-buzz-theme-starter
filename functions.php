@@ -7,7 +7,9 @@
  * @since 1.0.0
  */
 
-namespace {theme-namespace};
+namespace WP_Buzz;
+
+use WP_Buzz\Theme\WP_Buzz_Theme_Factory;
 
 /**
  * Autoload Classes
