@@ -16,7 +16,7 @@ namespace WP_Buzz\Builder;
 
 use Bdev\ContentManagement\Interfaces\Theme_Content_Configuration_Interface;
 use Bdev\ContentManagement\Theme_Content_Provider;
-use Bdev\ContentManagement\Theme_Content_Provider_Builder_Interface;
+use Bdev\ContentManagement\Interfaces\Theme_Content_Provider_Builder_Interface;
 
 /**
  * WP_Buzz_Theme_Builder constructor.

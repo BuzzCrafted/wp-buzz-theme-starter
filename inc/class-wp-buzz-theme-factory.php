@@ -16,11 +16,13 @@
 namespace WP_Buzz\Theme;
 
 use WP_Buzz\Builder\WP_Buzz_Theme_Builder;
-use WP_Buzz\Configuratoe\WP_Buzz_Theme_Content_Configurator;
+use WP_Buzz\Configurator\WP_Buzz_Theme_Content_Configurator;
+
 use Bdev\ContentManagement\Interfaces\Content_Data_Interface;
 use Bdev\Theme\Abstract_Theme_Factory;
 use Bdev\EventManagement\Event_Manager;
 use Bdev\Shortcodes\Shortcode_Manager;
+
 
 /**
  * Class WP_Buzz_Theme_Factory
@@ -39,7 +41,7 @@ class WP_Buzz_Theme_Factory extends Abstract_Theme_Factory {
 	 * @return Content_Data_Interface The content data configurator instance.
 	 */
 	public function create_content_data(): Content_Data_Interface {
-		$theme_builder = new WP_Buzz_Theme_Theme_Builder();
+		$theme_builder = new WP_Buzz_Theme_Builder;
 		return $theme_builder
 			->set_theme_content_configurator( new WP_Buzz_Theme_Content_Configurator() )
 			->build();

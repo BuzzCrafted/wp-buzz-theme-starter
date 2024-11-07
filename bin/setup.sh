@@ -25,6 +25,7 @@ THEME=$2
 THEME_LOWER=$( tr 'A-Z' 'a-z' <<<"$THEME" )
 THEME_ARRAY=($THEME)
 THEME_PASCAL_SNAKE=`echo ${THEME_ARRAY[@]^} | gsed -r 's/ /_/g'`
+THEME_LOWER_NO_SPACE=`echo ${THEME_ARRAY[@]^} | gsed -r 's/ //g'`
 THEME_KEBAB=`echo ${THEME_LOWER} | gsed -r 's/ /-/g'`
 THEME_SNAKE=`echo ${THEME_LOWER} | gsed -r 's/ /_/g'`
 THEME_CAPITAL_CAMEL_SNAKE=`echo ${THEME_PASCAL_SNAKE} |  gsed -r 's/_//g'`
@@ -96,7 +97,7 @@ for file in ./inc/class-wp-buzz-theme-factory.php  \
               ./inc/builder/class-wp-buzz-theme-builder.php \
               ./inc/configurator/class-wp-buzz-theme-content-configurator.php; do
     if [ -f "$file" ]; then
-      new_file=$(echo "$file" | gsed -r "s/wp-buzz/${THEME_KEBAB}/g")
+      new_file=$(echo "$file" | gsed -r "s/wp-buzz/${THEME_LOWER_NO_SPACE}/g")
       mv "$file" "$new_file"
     fi
 done
