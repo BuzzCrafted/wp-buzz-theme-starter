@@ -33,7 +33,7 @@ class WP_Buzz_Theme_Content_Configurator implements Theme_Content_Configuration_
 		 * associated with the theme.
 		 *
 		 * @since 1.0.0
-		 * @return array<int, Subscriber_Interface> Array of event subscribers.
+		 * @return array<string, Subscriber_Interface>> Array of event subscribers.
 		 */
 	public function get_event_subscribers(): array {
 		return array();
@@ -46,7 +46,7 @@ class WP_Buzz_Theme_Content_Configurator implements Theme_Content_Configuration_
 		 * associated with the theme.
 		 *
 		 * @since 1.0.0
-		 * @return array<int, Shortcode_Interface> Array of shortcode configurations.
+		 * @return array<string, array<string, Shortcode_Interface>> Array of shortcode configurations.
 		 */
 	public function get_shortcode_config(): array {
 		return array();
