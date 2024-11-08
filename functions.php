@@ -20,9 +20,9 @@ if ( is_readable( $vendor_file ) ) {
 	include_once $vendor_file;
 }
 
-$theme = ( new WP_Buzz_Theme_Factory() )->create_content_data();
+$theme_loader = ( new WP_Buzz_Theme_Factory() )->create_theme_loader();
 
-$theme->load_theme();
+$theme_loader->load_theme();
 
 /**
  * Loadd extra functions
