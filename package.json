@@ -54,7 +54,7 @@
 	"scripts": {
 		"clean": "rimraf ./bundle && mkdir bundle",
 		"build": "composer dumpautoload && wp-scripts build",
-		"bundle": "npm run build && npm run theme-zip",
+		"bundle": "composer install --no-dev  && npm run build && npm run theme-zip && composer install",
 		"check-engines": "wp-scripts check-engines",
 		"check-licenses": "wp-scripts check-licenses",
 		"format": "wp-scripts format",
