@@ -64,8 +64,7 @@ class WP_Buzz_Theme_Builder implements Theme_Content_Provider_Builder_Interface 
 	public function build(): Theme_Content_Provider {
 		return new Theme_Content_Provider(
 			$this->theme_configurator->get_event_subscribers(),
-			$this->theme_configurator->get_shortcode_config(),
-			$this->theme_configurator->get_theme_settings()
+			$this->theme_configurator->get_shortcode_config()
 		);
 	}
 }
