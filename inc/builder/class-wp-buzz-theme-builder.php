@@ -45,7 +45,7 @@ class WP_Buzz_Theme_Builder implements Theme_Content_Provider_Builder_Interface 
 	 * @since 1.0.0
 	 *
 	 * @param Theme_Content_Configuration_Interface $configurator The content configurator instance.
-	 * @return Theme_Content_Provider_Builder_Interface The instance of the builder.
+	 * @return CoolPresser_Theme_Builder The instance of the builder.
 	 */
 	public function set_theme_content_configurator( Theme_Content_Configuration_Interface $configurator ): self {
 		$this->theme_configurator = $configurator;
